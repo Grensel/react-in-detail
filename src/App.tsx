@@ -1,5 +1,6 @@
 import "./App.css";
 import { Accordion } from "./components/accordion/Accordion";
+import { OnOf } from "./components/onOf/OnOf";
 import { Rating } from "./components/rating/Rating";
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
       <Rating value={3} />
       <Rating value={4} />
       <Rating value={5} />
+      <OnOf active={true} />
+      <OnOf active={false} />
     </>
   );
 }

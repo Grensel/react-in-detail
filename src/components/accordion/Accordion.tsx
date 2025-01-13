@@ -2,19 +2,21 @@ type AccordionPropsType = {
   titleValue: string;
   collapsed: boolean;
 };
+type AccordionTitltePropsType = {
+  title: string;
+};
+type AccordionBodyPropsType = {
+  collapsed: boolean;
+};
 
 export const Accordion = ({ titleValue, collapsed }: AccordionPropsType) => {
   console.log("Accordion rendering");
   return (
     <>
       <AccordionTitlte title={titleValue} />
-      <AccordionBody collapsed={collapsed} />
+      {!collapsed && <AccordionBody collapsed={collapsed} />}
     </>
   );
-};
-
-type AccordionTitltePropsType = {
-  title: string;
 };
 
 const AccordionTitlte = ({ title }: AccordionTitltePropsType) => {
@@ -26,22 +28,15 @@ const AccordionTitlte = ({ title }: AccordionTitltePropsType) => {
   );
 };
 
-type AccordionBodyPropsType = {
-  collapsed: boolean;
-};
-
 const AccordionBody = ({ collapsed }: AccordionBodyPropsType) => {
   console.log("AccordionBody rendering");
-  if (collapsed === true) {
-    return (
-      <>
-        <ul>
-          <li>1{collapsed}</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
-      </>
-    );
-  }
-  return;
+  return (
+    <>
+      <ul>
+        <li>1{collapsed}</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </>
+  );
 };
