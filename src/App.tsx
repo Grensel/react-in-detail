@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { Accordion } from "./components/accordion/Accordion";
+import { OnOf } from "./components/onOf/OnOf";
+import { Rating } from "./components/rating/Rating";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  console.log("App rendering");
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <PageTitle title={"This is APP component"} />
+      <PageTitle title={"My friends"} />
+      Article 1
+      <Rating value={3} />
+      <Accordion titleValue={"Menu"} collapsed={true} />
+      <Accordion titleValue={"Users"} collapsed={false} />
+      <Rating value={0} />
+      <Rating value={1} />
+      <Rating value={2} />
+      <Rating value={3} />
+      <Rating value={4} />
+      <Rating value={5} />
+      <OnOf active={true} />
+      <OnOf active={false} />
     </>
-  )
+  );
 }
 
-export default App
+type PageTtitlePropsType = {
+  title: string;
+};
+
+const PageTitle = ({ title }: PageTtitlePropsType) => {
+  console.log("PageTitle rendering");
+  return <h1>{title}</h1>;
+};
+
+export default App;
