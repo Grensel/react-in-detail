@@ -1,8 +1,10 @@
-type OnOfPorpsType = {
-  active: boolean;
-};
+import { useState } from "react";
 
-export const OnOf = ({ active }: OnOfPorpsType) => {
+export const OnOf = () => {
+  console.log("OnOf rendering");
+  const [on, setOn] = useState(false);
+  console.log(on);
+
   const block = {
     display: "flex",
     justifyContent: "center",
@@ -10,17 +12,17 @@ export const OnOf = ({ active }: OnOfPorpsType) => {
     gap: "5px",
     margin: "20px",
   };
-  const greenBlub = {
+  const onStyle = {
     height: "30px",
     width: "40px",
     border: "1px solid black",
-    backgroundColor: active ? "green" : "greey",
+    backgroundColor: on ? "green" : "grey",
   };
-  const redBlub = {
+  const offStyle = {
     height: "30px",
     width: "40px",
     border: "1px solid black",
-    backgroundColor: active ? "greey" : "red",
+    backgroundColor: on ? "grey" : "red",
   };
   const indicatorStyle = {
     marginLeft: "10px",
@@ -28,12 +30,16 @@ export const OnOf = ({ active }: OnOfPorpsType) => {
     height: "10px",
     border: "1px solid black",
     borderRadius: "5px",
-    backgroundColor: active ? "green" : "red",
+    backgroundColor: on ? "green" : "red",
   };
   return (
     <div style={block}>
-      <div style={greenBlub}>on</div>
-      <div style={redBlub}>of</div>
+      <div style={onStyle} onClick={() => setOn(true)}>
+        on
+      </div>
+      <div style={offStyle} onClick={() => setOn(false)}>
+        of
+      </div>
       <div style={indicatorStyle}></div>
     </div>
   );
