@@ -1,39 +1,42 @@
 type AccordionPropsType = {
   titleValue: string;
   collapsed: boolean;
+  onChange: () => void;
 };
 type AccordionTitltePropsType = {
   title: string;
-};
-type AccordionBodyPropsType = {
-  collapsed: boolean;
+  onChange: () => void;
 };
 
-export const Accordion = ({ titleValue, collapsed }: AccordionPropsType) => {
+export const Accordion = ({
+  titleValue,
+  collapsed,
+  onChange,
+}: AccordionPropsType) => {
   console.log("Accordion rendering");
   return (
     <>
-      <AccordionTitlte title={titleValue} />
-      {!collapsed && <AccordionBody collapsed={collapsed} />}
+      <AccordionTitlte title={titleValue} onChange={onChange} />
+      {!collapsed && <AccordionBody />}
     </>
   );
 };
 
-const AccordionTitlte = ({ title }: AccordionTitltePropsType) => {
+const AccordionTitlte = ({ title, onChange }: AccordionTitltePropsType) => {
   console.log("AccordionTitlte rendering");
   return (
     <>
-      <h3>--- {title} ---</h3>
+      <h3 onClick={onChange}>--- {title} ---</h3>
     </>
   );
 };
 
-const AccordionBody = ({ collapsed }: AccordionBodyPropsType) => {
+const AccordionBody = () => {
   console.log("AccordionBody rendering");
   return (
     <>
       <ul>
-        <li>1{collapsed}</li>
+        <li>1</li>
         <li>2</li>
         <li>3</li>
       </ul>

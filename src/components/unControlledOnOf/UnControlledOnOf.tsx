@@ -1,11 +1,10 @@
-export type OnOfType = boolean;
-type OnOfPropsType = {
-  on: OnOfType;
-  onChange: () => void;
+import { useState } from "react";
+type UnControlledOnOfPropsType = {
+  callBack: (b: boolean) => void;
 };
-
-export const OnOf = ({ on, onChange }: OnOfPropsType) => {
+export const UnControlledOnOf = ({ callBack }: UnControlledOnOfPropsType) => {
   console.log("OnOf rendering");
+  const [on, setOn] = useState(false);
   console.log(on);
 
   const block = {
@@ -35,12 +34,22 @@ export const OnOf = ({ on, onChange }: OnOfPropsType) => {
     borderRadius: "5px",
     backgroundColor: on ? "green" : "red",
   };
+
+  const onClicled = () => {
+    setOn(true);
+    callBack(true);
+  };
+  const offClicled = () => {
+    setOn(false);
+    callBack(false);
+  };
+
   return (
     <div style={block}>
-      <div style={onStyle} onClick={onChange}>
+      <div style={onStyle} onClick={onClicled}>
         on
       </div>
-      <div style={offStyle} onClick={onChange}>
+      <div style={offStyle} onClick={offClicled}>
         of
       </div>
       <div style={indicatorStyle}></div>
