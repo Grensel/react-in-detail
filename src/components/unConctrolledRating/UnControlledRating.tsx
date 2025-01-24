@@ -1,7 +1,9 @@
 import { useState } from "react";
 
+type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5;
+
 type RatingPropsType = {
-  value: 0 | 1 | 2 | 3 | 4 | 5;
+  value: RatingValueType;
 };
 type StarPropsType = {
   selected: boolean;
@@ -11,7 +13,7 @@ export const UnControlledRating = (props: RatingPropsType) => {
   console.log("Rating rendering");
   const [value, setValue] = useState(props.value);
 
-  const changeValue = (n: 0 | 1 | 2 | 3 | 4 | 5) => () => setValue(n);
+  const changeValue = (n: RatingValueType) => () => setValue(n);
 
   return (
     <div>
