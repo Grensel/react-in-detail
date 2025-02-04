@@ -8,11 +8,7 @@ type AccordionTitltePropsType = {
   onChange: () => void;
 };
 
-export const Accordion = ({
-  titleValue,
-  collapsed,
-  onChange,
-}: AccordionPropsType) => {
+export const Accordion = ({ titleValue, collapsed, onChange }: AccordionPropsType) => {
   console.log("Accordion rendering");
   return (
     <>
@@ -26,7 +22,7 @@ const AccordionTitlte = ({ title, onChange }: AccordionTitltePropsType) => {
   console.log("AccordionTitlte rendering");
   return (
     <>
-      <h3 onClick={onChange}>--- {title} ---</h3>
+      <h3 onClick={(event: React.MouseEvent<HTMLHeadingElement>) => onChange()}>--- {title} ---</h3>
     </>
   );
 };
