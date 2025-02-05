@@ -1,10 +1,11 @@
 import { useState } from "react";
 type UnControlledOnOfPropsType = {
   callBack: (b: boolean) => void;
+  dafaultOn?: boolean;
 };
-export const UnControlledOnOf = ({ callBack }: UnControlledOnOfPropsType) => {
+export const UnControlledOnOf = ({ callBack, dafaultOn }: UnControlledOnOfPropsType) => {
   console.log("OnOf rendering");
-  const [on, setOn] = useState(false);
+  const [on, setOn] = useState(dafaultOn ? dafaultOn : false);
   console.log(on);
 
   const block = {

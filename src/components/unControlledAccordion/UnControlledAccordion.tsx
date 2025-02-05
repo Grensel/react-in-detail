@@ -5,6 +5,7 @@ type AccordionPropsType = {
 };
 type AccordionTitltePropsType = {
   title: string;
+  defalt?: boolean;
   callBack: () => void;
 };
 
