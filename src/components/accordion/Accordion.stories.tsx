@@ -19,15 +19,35 @@ export const FirstStory: Story = {
 };
 
 const onChangeHandler = action("onCHange");
+const onClick = action("some items was clicked");
 
 export const CollapsedAccordion = () => {
   return (
-    <Accordion titleValue={"Collapsed Accordion"} collapsed={true} onChange={onChangeHandler} />
+    <Accordion
+      titleValue={"Collapsed Accordion"}
+      collapsed={true}
+      onChange={onChangeHandler}
+      items={[]}
+      onClick={onClick}
+    />
   );
 };
 
 export const OpenedAccordion = () => {
-  return <Accordion titleValue={"Opened Accordion"} collapsed={false} onChange={onChangeHandler} />;
+  return (
+    <Accordion
+      titleValue={"Opened Accordion"}
+      collapsed={false}
+      onChange={onChangeHandler}
+      items={[
+        { title: "Dimych", value: 1 },
+        { title: "Valera", value: 2 },
+        { title: "Artem", value: 3 },
+        { title: "Victor", value: 4 },
+      ]}
+      onClick={onClick}
+    />
+  );
 };
 
 export const AccordionDemo = () => {
@@ -37,6 +57,15 @@ export const AccordionDemo = () => {
       titleValue={"Accordion"}
       collapsed={collapsed}
       onChange={() => setCollapsed(!collapsed)}
+      items={[
+        { title: "Dimych", value: 1 },
+        { title: "Valera", value: 2 },
+        { title: "Artem", value: 3 },
+        { title: "Victor", value: 4 },
+      ]}
+      onClick={value => {
+        alert(`${value} click`);
+      }}
     />
   );
 };
