@@ -6,8 +6,8 @@ type AccordionPropsType = {
   titleValue: string;
   collapsed: boolean;
   onChange: () => void;
-  items: ItemType[];
-  onClick: (value: any) => void;
+  items?: ItemType[];
+  onClick?: (value: any) => void;
 };
 type AccordionTitltePropsType = {
   title: string;

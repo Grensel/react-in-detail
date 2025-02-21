@@ -27,12 +27,30 @@ function App() {
         onChange={() => {
           setaccordionCollapsed(!accordionCollapsed);
         }}
+        items={[
+          { title: "Dimych", value: 1 },
+          { title: "Valera", value: 2 },
+          { title: "Artem", value: 3 },
+          { title: "Victor", value: 4 },
+        ]}
+        onClick={value => {
+          alert(`${value} click`);
+        }}
       />
       <Accordion
         titleValue={"Users"}
         collapsed={accordionCollapsed}
         onChange={() => {
           setaccordionCollapsed(!accordionCollapsed);
+        }}
+        items={[
+          { title: "Dimych", value: 1 },
+          { title: "Valera", value: 2 },
+          { title: "Artem", value: 3 },
+          { title: "Victor", value: 4 },
+        ]}
+        onClick={value => {
+          alert(`${value} click`);
         }}
       />
       <OnOf on={switchOn} onChange={() => setSwitchOn(!switchOn)} />
