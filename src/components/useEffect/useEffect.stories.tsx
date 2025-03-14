@@ -43,7 +43,7 @@ export const SetTimeoutExample = () => {
   useEffect(() => {
     setTimeout(() => {
       // setTime(`Hour: ${day.getHours().toString()} Minets: ${day.getMinutes()} Seconds: ${day.getSeconds()}`)
-      setTime(`${day.getHours().toString()} : ${day.getMinutes()} : ${day.getSeconds()} : ${day.getMilliseconds()}`)
+      setTime(`${day.getHours()} : ${day.getMinutes()} : ${day.getSeconds()} : ${day.getMilliseconds()}`)
     }, 10)
   }, [time])
   useEffect(() => {
