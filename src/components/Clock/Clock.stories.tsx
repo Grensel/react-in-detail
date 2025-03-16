@@ -8,5 +8,12 @@ const meta: Meta<typeof Clock> = {
 export default meta;
 type Story = StoryObj<typeof Clock>;
 export const FirstStory: Story = {
-  args: {},
+  args: {
+    mode: 'analog'
+  },
+};
+export const SecondStory: Story = {
+  args: {
+    mode: 'digital'
+  },
 };
