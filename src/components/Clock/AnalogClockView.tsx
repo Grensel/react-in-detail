@@ -14,6 +14,7 @@ export const AnalogClockView: React.FC<ClockViewPropsType> = ({ date }) => {
   return (
     <div className={styles.clock}>
       <div className={styles['analog-clock']}>
+        <div className={`${styles.circle}`} />
         <div className={`${styles.dial} ${styles.seconds}`} style={secondsStyle} />
         <div className={`${styles.dial} ${styles.minutes}`} style={minutesStyle} />
         <div className={`${styles.dial} ${styles.hours}`} style={hoursStyle} />
