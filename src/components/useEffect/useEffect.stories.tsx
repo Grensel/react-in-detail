@@ -31,60 +31,82 @@ export default {
 //     </>
 //   )
 // }
-export const SetTimeoutExample = () => {
-  // const [counter, setCounter] = useState(1)
-  const [date, setDate] = useState("2024-07-22")
-  const [time, setTime] = useState(``)
+export const SetIntervalExample = () => {
+  const [counter, setCounter] = useState(1)
 
 
-  const day = new Date()
-
-  // console.log(time);
+  console.log('SetIntervalExample');
   useEffect(() => {
-    setTimeout(() => {
-      // setTime(`Hour: ${day.getHours().toString()} Minets: ${day.getMinutes()} Seconds: ${day.getSeconds()}`)
-      setTime(`${day.getHours()} : ${day.getMinutes()} : ${day.getSeconds()} : ${day.getMilliseconds()}`)
-    }, 10)
-  }, [time])
+
+    const intervalId = setInterval(() => {
+      console.log('tick: ' + counter);
+      setCounter((state) => state + 1)
+    }, 1000)
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [])
+  return <>
+    Hello, counter: {counter}
+  </>
+}
+
+
+export const ResetEffectExample = () => {
+  const [counter, setCounter] = useState(1)
+  console.log('Component rendered with ' + counter);
+
   useEffect(() => {
-    setTimeout(() => {
-      // setTime(`Hour: ${day.getHours().toString()} Minets: ${day.getMinutes()} Seconds: ${day.getSeconds()}`)
-      setDate(`${day.getFullYear().toString()}-0${day.getMonth()}-0${day.getDay()}`)
-    }, 10)
-  }, [date])
-
-
-
-  // useEffect(() => {
-
-  //   setTimeout(() => {
-  //     console.log('setTimeout');
-  //     document.title = counter.toString()
-  //   }, 1000)
-
-  // }, [counter])
-
-  // useEffect(() => {
-
-  //   setInterval(() => {
-  //     console.log('tick: ' + counter);
-  //     setFake((state) => state + 1)
-  //   }, 1000)
-
-  // }, [])
-
-
+    console.log('Effect occurred');
+  }, [counter])
+  const increase = () => { setCounter(counter + 1) }
 
   return (
     <>
-      <span>{time}</span>
-      <div>
-        <input disabled value={date} type="date" style={{ background: 'none', border: 'none' }} />
-      </div>
-      {/* Hello, counter: {counter} fake: {fake}
-      <button onClick={() => setCounter(counter + 1)}>counter +</button> */}
-      {/* <button onClick={() => setFake(fake + 1)}>fake +</button> */}
+      Hello, counter : {counter} <button onClick={increase}>+</button >
     </>
   )
 }
+export const KeysTrackerExample = () => {
+  const [text, setText] = useState("")
+  console.log('Component rendered with ' + text);
 
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      console.log(e.key);
+      setText(text + e.key)
+    }
+    window.document.addEventListener('keypress', handler)
+    return () => {
+      console.log('Effect end');
+      window.document.removeEventListener('keypress', handler)
+    }
+  }, [text])
+  return (
+    <>
+      Typed text : {text}
+    </>
+  )
+}
+export const SetTimeoutExample = () => {
+  const [text, setText] = useState("")
+
+  console.log('Component rendered with ' + text);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      console.log('TIMEOUT EXPIRED');
+
+      setText('3 seconds passed')
+    }, 3000)
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [text])
+
+  return (
+    <>
+      Typed text : {text}
+    </>
+  )
+}
